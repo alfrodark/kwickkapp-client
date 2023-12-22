@@ -1,0 +1,85 @@
+<div class="main-container">
+  <div class="client-details-container">
+    <h1>Client Details</h1>
+    <div class="nav">
+      <nav>
+        <button class="button-list" routerLink="/clients">View Client List</button>
+      </nav>
+    </div>
+  <div class="list-container">
+    <div class="client-details-container">
+      <div *ngIf="client$">
+        <mat-card class="card-custom">
+          <mat-card-header>
+            <mat-card-title>{{ client$.name }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="card-content-custom">
+            <p>Photo:</p>
+            <img class="photo-size" *ngIf="client$.photoUrl" [src]="client$.photoUrl" alt="Client Photo">
+            <div>
+              <strong>Name:</strong> {{ client$.name }}
+            </div>
+            <div>
+              <strong>Email:</strong> {{ client$.email }}
+            </div>
+            <div>
+              <strong>Phone:</strong> {{ client$.phone }}
+            </div>
+            <div>
+              <strong>Address:</strong> {{ client$.address }}
+            </div>
+            <div>
+              <strong>Street:</strong> {{ client$.street }}
+            </div>
+            <div>
+              <strong>City:</strong> {{ client$.city }}
+            </div>
+            <div>
+              <strong>Zip:</strong> {{ client$.zip }}
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    <ng-template #loading>
+      <p>Loading client details...</p>
+    </ng-template>
+  </div>
+
+
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Billing Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="user">
+        <!-- Display client details -->
+
+        <h3>Billing Information</h3>
+        <app-billing-form [clientId]="clientId"></app-billing-form>
+
+        <h4>Billing History</h4>
+        <div class="list-container" *ngFor="let billing of billings">
+          <p>Invoice Number: {{ billing.invoiceNumber }}</p>
+          <p>Amount: {{ billing.amount }}</p>
+          <p>Reasons: {{ billing.reasons }}</p>
+          <p>Date: {{ formatTimestamp(billing.date.toString()) }}</p>
+          <!-- Add other billing-related fields as needed -->
+
+          <button mat-icon-button (click)="deleteBillingEntries()">
+            <mat-icon matTooltip="Delete Bill" matTooltipPosition="above" matTooltipShowDelay="1000" matTooltipHideDelay="500" class="custom-icon">delete</mat-icon>
+          </button>
+        </div>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+</div>
+</div>
+
+
+
+
+

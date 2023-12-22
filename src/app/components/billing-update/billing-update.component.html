@@ -1,0 +1,28 @@
+
+<div class="main-container">
+  <div class="client-form-container">
+    <div class="sub-container">
+      <div class="client-form-container">
+        <div>
+          <button class="button-cancel" routerLink="/clients">Cancel</button>
+        </div>
+        <div *ngIf="clientId">
+          <form [formGroup]="billingForm" (ngSubmit)="updateBilling()">
+            <mat-form-field>
+              <input matInput placeholder="Amount" formControlName="amount" type="number">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <!-- Add other billing-related fields as needed -->
+
+            <button mat-raised-button color="primary" type="submit">Update Billing</button>
+          </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+

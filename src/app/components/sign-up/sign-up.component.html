@@ -1,0 +1,76 @@
+<div class="main-container">
+  <div class="signUp-container">
+    <div class="sub-container">
+         <div class="container text-center p-5">
+           <h2 class="display-4">Client
+             <i class="fa fa-angle-double-up text-success" aria-hidden="true"></i>
+             Management App
+           </h2>
+           <form [formGroup]="signupForm" (ngSubmit)="signUp()" class="col-lg-12 mx-auto">
+             <h3>Sign up new user</h3>
+             <div>
+              <mat-icon matSuffix>email</mat-icon>
+              <input type="email" formControlName="email" class="increased-size" placeholder="Enter Your email"/>
+              <div *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched" class="text-danger text-start">
+                Email is required.
+              </div>
+              <div *ngIf="signupForm.get('email').hasError('email') && signupForm.get('email').touched" class="text-danger text-start">
+                Please enter a valid email.
+              </div>
+             </div>
+             <div>
+              <mat-icon matSuffix>lock</mat-icon>
+              <input type="password" formControlName="password" class="increased-size" placeholder="Enter Your password"/>
+              <div *ngIf="signupForm.get('password').hasError('required') && signupForm.get('password').touched" class="text-danger text-start">
+                Password is required.
+              </div>
+              <div *ngIf="signupForm.get('password').hasError('minlength') && signupForm.get('password').touched" class="text-danger text-start">
+                Password must be at least 6 characters long.
+              </div>
+             </div>
+             <div>
+              <input type="name" formControlName="name" class="increased-size" placeholder="Name..."
+              required minlength="3"/>
+              <div *ngIf="signupForm.get('name').hasError('required') && signupForm.get('name').touched" class="text-danger text-start">
+                Name is required.
+              </div>
+              <div *ngIf="signupForm.get('name').hasError('name') && signupForm.get('name').touched" class="text-danger text-start">
+                Please enter a valid name.
+              </div>
+             </div>
+             <div>
+              <input type="phone" formControlName="phone" class="increased-size" placeholder="Phone..."
+              required minlength="3"/>
+              <div *ngIf="signupForm.get('phone').hasError('required') && signupForm.get('phone').touched" class="text-danger text-start">
+                Phone is required.
+              </div>
+              <div *ngIf="signupForm.get('phone').hasError('phone') && signupForm.get('phone').touched" class="text-danger text-start">
+                Please enter a valid phone.
+              </div>
+             </div>
+             <div>
+              <input type="city" formControlName="city" class="increased-size" placeholder="City..."
+              required minlength="3"/>
+              <div *ngIf="signupForm.get('city').hasError('required') && signupForm.get('city').touched" class="text-danger text-start">
+                City is required.
+              </div>
+              <div *ngIf="signupForm.get('city').hasError('city') && signupForm.get('city').touched" class="text-danger text-start">
+                Please enter a valid city.
+              </div>
+             </div>
+             <div>
+               <button [disabled]="signupForm.invalid" class="button-signUp">Sign Up</button>
+             </div>
+             <br>
+            <br>
+             <div class="mt-5">
+              <a class="text-info text-decoration-none" routerLink="/">Already Registered? Click to Sign In now</a>
+            <br>
+             </div>
+           </form>
+         </div>
+       </div>
+  </div>
+</div>
+
+

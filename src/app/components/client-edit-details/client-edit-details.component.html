@@ -1,0 +1,52 @@
+
+<div class="container mt-3">
+  <h2>Edit Client</h2>
+  <form [formGroup]="editClientForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" class="form-control" formControlName="name">
+      <div *ngIf="editClientForm.get('name').hasError('required') && editClientForm.get('name').touched">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" class="form-control" formControlName="email">
+      <div *ngIf="editClientForm.get('email').hasError('required') && editClientForm.get('email').touched">
+        Email is required
+      </div>
+      <div *ngIf="editClientForm.get('email').hasError('email') && editClientForm.get('email').touched">
+        Please enter a valid email address
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" class="form-control" formControlName="phone">
+      <div *ngIf="editClientForm.get('phone').hasError('required') && editClientForm.get('phone').touched">
+        Phone is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="street">Street:</label>
+      <input type="text" id="street" class="form-control" formControlName="street">
+    </div>
+
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input type="text" id="city" class="form-control" formControlName="city">
+    </div>
+
+    <div class="form-group">
+      <label for="zip">Zip Code:</label>
+      <input type="text" id="zip" class="form-control" formControlName="zip">
+    </div>
+
+    <!-- Add more form controls for additional client properties -->
+
+    <button type="submit" class="btn btn-primary">Update Client</button>
+  </form>
+</div>
+

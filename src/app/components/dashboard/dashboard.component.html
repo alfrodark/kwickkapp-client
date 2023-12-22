@@ -1,0 +1,41 @@
+<app-dashboard-header></app-dashboard-header>
+<div class="main-container">
+  <div class="client-dashboard-container">
+    <div class="sub-container">
+      <div class="client-dashboard-container">
+        <h2 class="page-title">Client Dashboard</h2>
+        <div class="">
+          <button class="buttons-common, button-panel" mat-raised-button color="primary" routerLink="/clients">View Client List</button>
+          <button class="buttons-common, button-panel" mat-raised-button color="accent" routerLink="/add-Client">Add New Client</button>
+          <button class="buttons-common" mat-raised-button color="accent" routerLink="/user-details">View User Details</button>
+        </div>
+        <div *ngIf="clients | async as clients; else noClients">
+          <ul>
+            <li *ngFor="let client of clients">
+              {{ client.name }} - {{ client.email }}
+              <!-- Add more client details as needed -->
+            </li>
+          </ul>
+        </div>
+
+        <ng-template #noClients>
+          <p>No clients found.</p>
+        </ng-template>
+      </div>
+      <!-- dashboard.component.html -->
+
+    <div class="container mt-3">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Total Clients</h4>
+          <h2><p class="card-text">{{ totalClients$ | async }}</p></h2>
+        </div>
+      </div>
+
+      <!-- Add more dashboard cards or sections as needed -->
+    </div>
+    </div>
+
+  </div>
+</div>
+
